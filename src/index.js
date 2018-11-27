@@ -11,31 +11,62 @@ import './index.css';
 
 // dont touch this for now. 
 // I'll set up form entry once the library display is good.
-class BookForm extends React.Component {
+class AddNewBookForm extends React.Component {
   render() {
-    return <div> none</div>;
+    return <button> Add a New Book to the Library!</button>;
   }
 }
 
-class BookTitle extends React.Component {
-  render() {
-    return ;
-  }
-}
 
+// this component displays the 'remove book' button
 class RemoveBookFromLibrary extends React.Component {
-  render() {
-    return <button>Remove Book from Library</button>;
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
-}
+  handleClick() {
 
-class ReadToggle extends React.Component {
+  }
   render() {
-    return <button>Eventually this will toggle read status</button>;
+    return <button onClick={this.handleClick}>Remove Book from Library</button>;
   }
 }
+// TODO: define function to remove book from
+
+// this component displays the 'read' toggle button
+class ReadToggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isReadorNot: this.props.thisBook.isRead,
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    let newReadStatus = (this.state.isReadorNot === true) ? false : true;
+    this.setState({ isReadorNot: newReadStatus });
+  }
+  render() {
+    return (
+      <button onClick={this.handleClick}>
+        {this.state.isReadorNot.toString()}
+      </button>
+    );
+  }
+}
+// TODO: define function to toggle Read state
+
 
 class SingleBook extends React.Component {
+  // I might not even need this constructor 
+  // it was meant to get the read status of the books but its kind of unnecessary/
+  // constructor(props) {
+  //   super(props);
+  //   this.state={
+  //     readStatus:false,
+  //   };
+  // }
   render() {
     const aBook = this.props.aBook;
     const title = aBook.title;
@@ -43,16 +74,18 @@ class SingleBook extends React.Component {
     const numPages = aBook.numPages;
     const genre = aBook.genre;
     return (
-      <div className="bookBorder">
-        <h1>{title}</h1>
-        <h1>{author}</h1>
-        <h1>{numPages}</h1>
-        <h1>{genre}</h1>
-        <ReadToggle />
+      <div className="bookContainer">
+        <h1>Title: {title}</h1>
+        <h1>Author: {author}</h1>
+        <h1>Pages: {numPages}</h1>
+        <h1>Genre: {genre}</h1>
+        {/* <h3>this book has been read? {this.state.readStatus.toString()}</h3> */}
+        <ReadToggle thisBook={aBook} />
+        <br></br>
         <RemoveBookFromLibrary />
-      </div> 
+      </div>
     );
-    
+
   }
 }
 
@@ -62,19 +95,17 @@ class LibraryContainer extends React.Component {
     let lastBook = null;
 
     this.props.books.forEach((bookinlist) => {
-        rows.push(
-          <SingleBook 
-            aBook={bookinlist} 
-            title={bookinlist.title}
-            key={bookinlist.title} />
-        );
+      rows.push(
+        <SingleBook
+          aBook={bookinlist}
+          title={bookinlist.title}
+          key={bookinlist.title} />
+      );
 
     });
 
     return (
-     <div>
-       <h1>{rows}</h1>
-     </div> 
+      <div id="librarycontainer2">{rows}</div>
     );
   }
 }
@@ -83,8 +114,9 @@ class Library extends React.Component {
   render() {
     return (
       <div>
+        <AddNewBookForm />
         <LibraryContainer books={this.props.booksList} />
-        <h1>This is making sure Library renders</h1>
+        <AddNewBookForm />
       </div>
     );
   }
@@ -93,17 +125,17 @@ class Library extends React.Component {
 // This is a list of 'book' objects 
 // This version of the library project does not have backend data
 const BOOKSLIST = [
-  {title: 'book1', author: 'autho1 ', numPages: '1235', isRead:false, genre: 'scifi'},
-  {title: 'book2', author: 'autho2 ', numPages: '1235', isRead:false, genre: 'scifi'},
-  {title: 'book3', author: 'autho3 ', numPages: '1235', isRead:false, genre: 'autoBio'},
-  {title: 'book4', author: 'autho4 ', numPages: '1235', isRead:true, genre: 'scifi'},
-  {title: 'book5', author: 'autho5 ', numPages: '1235', isRead:false, genre: 'scifi'},
-  {title: 'book6', author: 'autho6 ', numPages: '1235', isRead:false, genre: 'scifi'},
-  {title: 'book7', author: 'autho8 ', numPages: '1235', isRead:false, genre: 'scifi'}
+  { title: 'book1', author: 'autho1 ', numPages: '1235', isRead: false, genre: 'scifi' },
+  { title: 'book2', author: 'autho2 ', numPages: '1235', isRead: false, genre: 'scifi' },
+  { title: 'book3', author: 'autho3 ', numPages: '1235', isRead: false, genre: 'autoBio' },
+  { title: 'book4', author: 'autho4 ', numPages: '1235', isRead: true, genre: 'scifi' },
+  { title: 'book5', author: 'autho5 ', numPages: '1235', isRead: false, genre: 'scifi' },
+  { title: 'book6', author: 'autho6 ', numPages: '1235', isRead: false, genre: 'scifi' },
+  { title: 'book7', author: 'autho8 ', numPages: '1235', isRead: false, genre: 'scifi' }
 ];
 
 
 ReactDOM.render(
-  <Library  booksList={BOOKSLIST} />,
+  <Library booksList={BOOKSLIST} />,
   document.getElementById("root")
 );
