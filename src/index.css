@@ -6,9 +6,36 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:rgba(139,128,240,.50);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#header {
+  background-color:rgba(91, 91, 151,88);
+  width:100%;
+  text-align: center;
+  color:rgb(255, 255, 255);
+  font-size:4em;
+} 
+.bookBorder {
+  border: 5px red solid;
+}
+
+#root {
+  /* flex attributes */
+  display:flex;
+  text-align:center;
+}
+
+button {
+  border:none;
+  background-color:rgb(0,0,53);
+  color:rgb(255, 255, 255);
+  margin:5px;
+  padding:10px;
+  font-size:1em;
 }
