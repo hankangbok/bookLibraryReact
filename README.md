@@ -1,5 +1,14 @@
 # Personal Library in ReactJS
-This project is a 
+This project is practice in working with React JS
+
+## Demo Environment Here:  
+ * Put the gh-pages link here*
+
+## This project was originally written in pure JS  
+- Check out the repo here:   
+https://github.com/kyouyatamax/jsLibraryOdinProject
+- Demo for the project is live at:    
+https://kyouyatamax.github.io/jsLibraryOdinProject/  
 
 
 # Default README for REACT below this line
