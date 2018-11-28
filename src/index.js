@@ -18,21 +18,6 @@ class AddNewBookForm extends React.Component {
 }
 
 
-// this component displays the 'remove book' button
-class RemoveBookFromLibrary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-  handleClick() {
-
-  }
-  render() {
-    return <button onClick={this.handleClick}>Remove Book from Library</button>;
-  }
-}
-// TODO: define function to remove book from
-
 // this component displays the 'read' toggle button
 class ReadToggle extends React.Component {
   constructor(props) {
@@ -55,18 +40,10 @@ class ReadToggle extends React.Component {
     );
   }
 }
-// TODO: define function to toggle Read state
 
 
 class SingleBook extends React.Component {
-  // I might not even need this constructor 
-  // it was meant to get the read status of the books but its kind of unnecessary/
-  // constructor(props) {
-  //   super(props);
-  //   this.state={
-  //     readStatus:false,
-  //   };
-  // }
+
   render() {
     const aBook = this.props.aBook;
     const title = aBook.title;
@@ -79,27 +56,66 @@ class SingleBook extends React.Component {
         <h1>Author: {author}</h1>
         <h1>Pages: {numPages}</h1>
         <h1>Genre: {genre}</h1>
-        {/* <h3>this book has been read? {this.state.readStatus.toString()}</h3> */}
         <ReadToggle thisBook={aBook} />
         <br></br>
-        <RemoveBookFromLibrary />
+        <RemoveBookFromLibrary title={title} onClick={this.props.onClick} />
       </div>
     );
 
   }
 }
 
+class RemoveBookFromLibrary extends React.Component {
+  render() {
+    return <button title={this.props.title} onClick={this.props.onClick}>Remove this Book from Library</button>;
+  }
+}
 class LibraryContainer extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      allBooks:  [
+        { title: 'book1', author: 'autho1 ', numPages: '1235', isRead: false, genre: 'scifi' },
+        { title: 'book2', author: 'autho2 ', numPages: '1235', isRead: false, genre: 'scifi' },
+        { title: 'book3', author: 'autho3 ', numPages: '1235', isRead: false, genre: 'autoBio' },
+        { title: 'book4', author: 'autho4 ', numPages: '1235', isRead: true, genre: 'scifi' },
+        { title: 'book5', author: 'autho5 ', numPages: '1235', isRead: false, genre: 'scifi' },
+        { title: 'book6', author: 'autho6 ', numPages: '1235', isRead: false, genre: 'scifi' },
+        { title: 'book7', author: 'autho8 ', numPages: '1235', isRead: false, genre: 'scifi' }
+      ]
+    }
+    this.handleRemoveClick=this.handleRemoveClick.bind(this);
+  }
+  
+  // Even handler for removing books
+  handleRemoveClick(e){ 
+
+    console.log("remove" + e.currentTarget.title);
+    const theTitle = e.currentTarget.title;
+    console.log("this is the book to remove" + theTitle);
+
+    console.log("should remove a book");
+    const allBooks1 = this.state.allBooks;
+    console.log(allBooks1);
+    const index = allBooks1.findIndex(eachBook => eachBook.title === theTitle);
+    console.log(index);
+    allBooks1.splice(index,1);
+    console.log(allBooks1);
+    this.setState({allBooks:allBooks1});
+    console.log(this.state.allBooks);
+  }
+
+  
   render() {
     const rows = [];
-    let lastBook = null;
 
-    this.props.books.forEach((bookinlist) => {
+    this.state.allBooks.forEach((bookinlist) => {
       rows.push(
         <SingleBook
           aBook={bookinlist}
           title={bookinlist.title}
-          key={bookinlist.title} />
+          key={bookinlist.title}
+          onClick={this.handleRemoveClick} />
       );
 
     });
@@ -111,6 +127,7 @@ class LibraryContainer extends React.Component {
 }
 
 class Library extends React.Component {
+  
   render() {
     return (
       <div>
