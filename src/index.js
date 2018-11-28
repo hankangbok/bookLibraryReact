@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import {NewBookFormEntry} from './newBookForm'
 // Hierarchy
 // rows within individual books
 // individual book object
@@ -13,7 +14,10 @@ import './index.css';
 // I'll set up form entry once the library display is good.
 class AddNewBookForm extends React.Component {
   render() {
-    return <button> Add a New Book to the Library!</button>;
+    // return <NewBookFormEntry />
+    return (
+      <button> Add a New Book to the Library!</button>
+    );
   }
 }
 
@@ -41,6 +45,11 @@ class ReadToggle extends React.Component {
   }
 }
 
+class RemoveBookFromLibrary extends React.Component {
+  render() {
+    return <button title={this.props.title} onClick={this.props.onClick}>Remove this Book from Library</button>;
+  }
+}
 
 class SingleBook extends React.Component {
 
@@ -65,11 +74,6 @@ class SingleBook extends React.Component {
   }
 }
 
-class RemoveBookFromLibrary extends React.Component {
-  render() {
-    return <button title={this.props.title} onClick={this.props.onClick}>Remove this Book from Library</button>;
-  }
-}
 class LibraryContainer extends React.Component {
   constructor(props) {
     super(props)
@@ -89,26 +93,18 @@ class LibraryContainer extends React.Component {
   
   // Even handler for removing books
   handleRemoveClick(e){ 
-
-    console.log("remove" + e.currentTarget.title);
     const theTitle = e.currentTarget.title;
     console.log("this is the book to remove" + theTitle);
 
-    console.log("should remove a book");
     const allBooks1 = this.state.allBooks;
-    console.log(allBooks1);
     const index = allBooks1.findIndex(eachBook => eachBook.title === theTitle);
-    console.log(index);
     allBooks1.splice(index,1);
-    console.log(allBooks1);
-    this.setState({allBooks:allBooks1});
-    console.log(this.state.allBooks);
+    this.setState({allBooks: allBooks1});
   }
 
   
   render() {
     const rows = [];
-
     this.state.allBooks.forEach((bookinlist) => {
       rows.push(
         <SingleBook
@@ -126,11 +122,13 @@ class LibraryContainer extends React.Component {
   }
 }
 
+
+
 class Library extends React.Component {
-  
   render() {
     return (
       <div>
+        <NewBookFormEntry />
         <AddNewBookForm />
         <LibraryContainer books={this.props.booksList} />
         <AddNewBookForm />
