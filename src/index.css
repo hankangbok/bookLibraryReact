@@ -54,3 +54,12 @@ button {
   padding:10px;
   font-size:1em;
 }
+
+#addBookForm {
+  border: 5px solid red;
+
+}
+
+#addBookForm.clicked {
+  border: 10px solid white;
+}

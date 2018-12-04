@@ -2,25 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import {NewBookFormEntry} from './newBookForm'
-// Hierarchy
-// rows within individual books
-// individual book object
-// library display
-// book form class
-// Library Class
-
 
 // dont touch this for now. 
 // I'll set up form entry once the library display is good.
+// class AddNewBookForm extends React.Component {
+//   render() {
+//     // return <NewBookFormEntry />
+//     return (
+//       <button> Add a New Book to the Library!</button>
+//     );
+//   }
+// }
+
 class AddNewBookForm extends React.Component {
   render() {
-    // return <NewBookFormEntry />
-    return (
-      <button> Add a New Book to the Library!</button>
-    );
+    return <NewBookFormEntry />;
   }
 }
-
 
 // this component displays the 'read' toggle button
 class ReadToggle extends React.Component {
@@ -128,7 +126,7 @@ class Library extends React.Component {
   render() {
     return (
       <div>
-        <NewBookFormEntry />
+        <NewBookFormEntry onClick={this.props.handleFormClick} />
         <AddNewBookForm />
         <LibraryContainer books={this.props.booksList} />
         <AddNewBookForm />
