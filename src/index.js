@@ -29,16 +29,25 @@ class ReadToggle extends React.Component {
     }
     this.handleClick = this.handleClick.bind(this);
   }
-
+  
   handleClick() {
     let newReadStatus = (this.state.isReadorNot === true) ? false : true;
     this.setState({ isReadorNot: newReadStatus });
   }
   render() {
+    let isReadButton;
+    if (this.state.isReadorNot===true) {
+      isReadButton = "Finished!";
+    } else {
+      isReadButton = "Working on It";
+    }
     return (
-      <button onClick={this.handleClick}>
-        {this.state.isReadorNot.toString()}
-      </button>
+      <h3>Have you finished the book?
+        <button onClick={this.handleClick}>
+          {/* {this.state.isReadorNot.toString()} */}
+          {isReadButton}
+        </button>
+      </h3>
     );
   }
 }
@@ -60,9 +69,9 @@ class SingleBook extends React.Component {
     return (
       <div className="bookContainer">
         <h1>Title: {title}</h1>
-        <h1>Author: {author}</h1>
-        <h1>Pages: {numPages}</h1>
-        <h1>Genre: {genre}</h1>
+        <h2>Author: {author}</h2>
+        <h2>Pages: {numPages}</h2>
+        <h2>Genre: {genre}</h2>
         <ReadToggle thisBook={aBook} />
         <br></br>
         <RemoveBookFromLibrary title={title} onClick={this.props.onClick} />
@@ -77,13 +86,13 @@ class LibraryContainer extends React.Component {
     super(props)
     this.state = {
       allBooks:  [
-        { title: 'book1', author: 'autho1 ', numPages: '1235', isRead: false, genre: 'scifi' },
-        { title: 'book2', author: 'autho2 ', numPages: '1235', isRead: false, genre: 'scifi' },
-        { title: 'book3', author: 'autho3 ', numPages: '1235', isRead: false, genre: 'autoBio' },
-        { title: 'book4', author: 'autho4 ', numPages: '1235', isRead: true, genre: 'scifi' },
-        { title: 'book5', author: 'autho5 ', numPages: '1235', isRead: false, genre: 'scifi' },
-        { title: 'book6', author: 'autho6 ', numPages: '1235', isRead: false, genre: 'scifi' },
-        { title: 'book7', author: 'autho8 ', numPages: '1235', isRead: false, genre: 'scifi' }
+        { title: 'Lord of the Rings: Fellowship of the Ring', author: 'JRR Tolkien ', numPages: '1235', isRead: true, genre: 'Fantasy' },
+        { title: 'Lord of the Rings: The Two Towers', author: 'JRR Tolkien ', numPages: '1235', isRead: false, genre: 'Fantasy' },
+        { title: 'Lord of the Rings: Return of the King', author: 'JRR Tolkien ', numPages: '1235', isRead: false, genre: 'Fantasy' },
+        { title: 'Game of Thrones', author: 'George R R Martin ', numPages: '1235', isRead: true, genre: 'Fantasy' },
+        { title: 'Cell ', author: 'Stephen King ', numPages: '1235', isRead: false, genre: 'horror' },
+        { title: 'Design It Yourself', author: 'Ellen Lipton', numPages: '1235', isRead: false, genre: 'DIY' },
+        { title: 'Fullmetal Alchemist', author: 'Hiromu Arakawa', numPages: '1235', isRead: false, genre: 'manga' }
       ]
     }
     this.handleRemoveClick=this.handleRemoveClick.bind(this);
@@ -137,18 +146,19 @@ class Library extends React.Component {
 
 // This is a list of 'book' objects 
 // This version of the library project does not have backend data
-const BOOKSLIST = [
-  { title: 'book1', author: 'autho1 ', numPages: '1235', isRead: false, genre: 'scifi' },
-  { title: 'book2', author: 'autho2 ', numPages: '1235', isRead: false, genre: 'scifi' },
-  { title: 'book3', author: 'autho3 ', numPages: '1235', isRead: false, genre: 'autoBio' },
-  { title: 'book4', author: 'autho4 ', numPages: '1235', isRead: true, genre: 'scifi' },
-  { title: 'book5', author: 'autho5 ', numPages: '1235', isRead: false, genre: 'scifi' },
-  { title: 'book6', author: 'autho6 ', numPages: '1235', isRead: false, genre: 'scifi' },
-  { title: 'book7', author: 'autho8 ', numPages: '1235', isRead: false, genre: 'scifi' }
-];
+// const BOOKSLIST = [
+//   { title: 'book1', author: 'autho1 ', numPages: '1235', isRead: false, genre: 'scifi' },
+//   { title: 'book2', author: 'autho2 ', numPages: '1235', isRead: false, genre: 'scifi' },
+//   { title: 'book3', author: 'autho3 ', numPages: '1235', isRead: false, genre: 'autoBio' },
+//   { title: 'book4', author: 'autho4 ', numPages: '1235', isRead: true, genre: 'scifi' },
+//   { title: 'book5', author: 'autho5 ', numPages: '1235', isRead: false, genre: 'scifi' },
+//   { title: 'book6', author: 'autho6 ', numPages: '1235', isRead: false, genre: 'scifi' },
+//   { title: 'book7', author: 'autho8 ', numPages: '1235', isRead: false, genre: 'scifi' }
+// ];
 
 
 ReactDOM.render(
-  <Library booksList={BOOKSLIST} />,
+  <Library />,
+  // <Library booksList={BOOKSLIST} />,
   document.getElementById("root")
 );
