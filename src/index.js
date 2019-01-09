@@ -167,10 +167,14 @@ class LibraryContainer extends React.Component {
       );
     });
 
-    return <div id="librarycontainer2">{rows}</div>;
+    return <div id="librarycontainer2">
+      <h2>If you've finished books, you can click the button next to 'Have you finished the book'</h2>
+      <h2>To purge a book from your library, click 'Remove this Book from Library'</h2>
+      <h2>Changes will not persist with page reload, this page is front-end only.</h2>
+      {rows}
+    </div>;
   }
 }
-
 
 class Library extends React.Component {
   constructor(props) {
@@ -178,7 +182,7 @@ class Library extends React.Component {
     this.state = {
       dummystate: "blank",
       newBook: { title: "Your new book will go here", key: "placeholder" },
-      formValidated: 'false'
+      formValidated: "false"
     };
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
@@ -220,13 +224,13 @@ class Library extends React.Component {
         isRead: haveRead
       };
       console.log(this.state.formValidated);
-      this.setState = ({ formValidated: 'true' },
+      this.setState = ({ formValidated: "true" },
       function() {
         console.log(this.state.formValidated);
       });
       this.setState = { newBook: newBook };
       console.log(this.state.newBook);
-      const asRead = haveRead ? 'read' : 'not read' ;
+      const asRead = haveRead ? "read" : "not read";
       alert(`Your book would have been added with 
       Title: ${title}, 
       Author: ${author}, 
@@ -237,7 +241,6 @@ class Library extends React.Component {
     } else {
       alert("Please fill out all fields");
     }
-
   }
   render() {
     return (

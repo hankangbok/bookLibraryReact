@@ -84,8 +84,8 @@ export class NewBookFormEntry extends React.Component {
       return (
         <form id="addBookForm" visibility='visible' completed='false'>
           <h1>Want to Add a New Book?</h1>
-          <h2>Sorry, new book addition is not available for now.</h2>
-          <h2>This is a front-end only webpage for now.</h2>
+          <h3>Sorry, new book addition is not available for now.</h3>
+          <h3>This is a front-end only webpage, but you can enter your book information and the page will respond with an alert.</h3>
           <p>
             <label htmlFor="title"> What is the title of the book?</label>
             <input id="title" name="booktitle" required />
@@ -111,7 +111,7 @@ export class NewBookFormEntry extends React.Component {
             <input id ='haveRead' type="radio" name="haveRead" value = "false" />
           </p>
           {/* <button onClick= {this.handleFormSubmit}>Submit</button> */}
-          <button onClick = {this.props.handleSubmit} >Submit (disabled) </button>
+          <button onClick = {this.props.handleSubmit} >Submit </button>
         </form>
       );
     } else {
