@@ -1,13 +1,13 @@
 {
-  "main.css": "/bookLibraryReact/static/css/main.b93e9606.chunk.css",
-  "main.js": "/bookLibraryReact/static/js/main.530f18cc.chunk.js",
-  "main.js.map": "/bookLibraryReact/static/js/main.530f18cc.chunk.js.map",
+  "main.css": "/bookLibraryReact/static/css/main.cdbc17b9.chunk.css",
+  "main.js": "/bookLibraryReact/static/js/main.66dc292f.chunk.js",
+  "main.js.map": "/bookLibraryReact/static/js/main.66dc292f.chunk.js.map",
   "static/js/1.20bc491b.chunk.js": "/bookLibraryReact/static/js/1.20bc491b.chunk.js",
   "static/js/1.20bc491b.chunk.js.map": "/bookLibraryReact/static/js/1.20bc491b.chunk.js.map",
   "runtime~main.js": "/bookLibraryReact/static/js/runtime~main.5578990f.js",
   "runtime~main.js.map": "/bookLibraryReact/static/js/runtime~main.5578990f.js.map",
-  "static/css/main.b93e9606.chunk.css.map": "/bookLibraryReact/static/css/main.b93e9606.chunk.css.map",
+  "static/css/main.cdbc17b9.chunk.css.map": "/bookLibraryReact/static/css/main.cdbc17b9.chunk.css.map",
   "index.html": "/bookLibraryReact/index.html",
-  "precache-manifest.d37b55261f93142e7e31c6ba541ead1e.js": "/bookLibraryReact/precache-manifest.d37b55261f93142e7e31c6ba541ead1e.js",
+  "precache-manifest.1fedacbdebea877980262f3b1d88ef4c.js": "/bookLibraryReact/precache-manifest.1fedacbdebea877980262f3b1d88ef4c.js",
   "service-worker.js": "/bookLibraryReact/service-worker.js"
 }
