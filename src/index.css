@@ -58,7 +58,12 @@ button {
 #addBookForm {
   /* border: 5px solid red; */
   border: 1px solid gray;
-
+  background-color: rgba(204, 204, 204, 0.5);
+  padding: 20px;
+  margin: 10px;
+  width: 50%;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 #addBookForm.clicked {
